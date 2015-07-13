@@ -1,0 +1,344 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     12450,        335]
+NotebookOptionsPosition[     11901,        314]
+NotebookOutlinePosition[     12237,        329]
+CellTagsIndexPosition[     12194,        326]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "77"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"quotient", "=", 
+   RowBox[{"Prime", "[", "n", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"base", "=", "2"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"h", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"discreteLog", "[", "x_", "]"}], ":=", 
+   RowBox[{"MultiplicativeOrder", "[", 
+    RowBox[{"base", ",", "quotient", ",", "x"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xSpace", "=", 
+   RowBox[{"ParametricPlot3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Cos", "[", "t", "]"}], ",", 
+       RowBox[{"Sin", "[", "t", "]"}], ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", 
+       RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"logSpace", "[", "h_", "]"}], "=", 
+   RowBox[{"ParametricPlot3D", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Cos", "[", "t", "]"}], ",", 
+       RowBox[{"Sin", "[", "t", "]"}], ",", "h"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", 
+       RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lines", "=", 
+   RowBox[{"Graphics3D", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Line", "[", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Cos", "[", 
+            RowBox[{"i", "*", "2", 
+             RowBox[{"Pi", "/", "quotient"}]}], "]"}], ",", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"i", "*", "2", 
+             RowBox[{"Pi", "/", "quotient"}]}], "]"}], ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Cos", "[", 
+            RowBox[{
+             RowBox[{"discreteLog", "[", "i", "]"}], "*", "2", 
+             RowBox[{"Pi", "/", "quotient"}]}], "]"}], ",", 
+           RowBox[{"Sin", "[", 
+            RowBox[{
+             RowBox[{"discreteLog", "[", "i", "]"}], "*", "2", 
+             RowBox[{"Pi", "/", "quotient"}]}], "]"}], ",", "h"}], "}"}]}], 
+        "}"}], "\[IndentingNewLine]", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", 
+        RowBox[{"quotient", "-", "1"}]}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\n", 
+ RowBox[{"Show", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"xSpace", ",", 
+     RowBox[{"logSpace", "[", "h", "]"}], ",", "lines"}], "}"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "h"}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.6455535962214413`*^9, 3.6455536630488157`*^9}, {
+   3.6455541144612617`*^9, 3.645554181432539*^9}, {3.645554233120605*^9, 
+   3.6455543921604156`*^9}, {3.645554448153524*^9, 3.6455545817211657`*^9}, {
+   3.6455546203610163`*^9, 3.645554712086673*^9}, {3.645554753448476*^9, 
+   3.645554754095471*^9}, {3.645554803435769*^9, 3.6455548662019787`*^9}, {
+   3.645554904821487*^9, 3.645554955867794*^9}, {3.6455550621529617`*^9, 
+   3.645555073554702*^9}, {3.645555153652114*^9, 3.645555155385664*^9}, {
+   3.645591689032641*^9, 3.645591714824799*^9}, 3.645592240032608*^9, {
+   3.6455929754627743`*^9, 3.645592975497566*^9}, 3.645593742649342*^9, {
+   3.645593962777955*^9, 3.645593963315393*^9}}],
+
+Cell[BoxData[
+ RowBox[{"discreteLog", "[", "0", "]"}]], "Input",
+ CellChangeTimes->{{3.645592476604291*^9, 3.645592479631734*^9}}],
+
+Cell["\<\
+Ideas: Color lines, to change hue from 1 -> p-1.
+Use hyperbolic arcs\
+\>", "Text",
+ CellChangeTimes->{{3.645555130963232*^9, 3.645555148124796*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"IdentityDisk", "[", "n_", "]"}], ":=", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"quotient", "=", "n"}], ";", 
+    RowBox[{"(*", 
+     RowBox[{"Prime", "[", "n", "]"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"base", "=", "2"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ColorData", "[", "\"\<Rainbow\>\"", "]"}], "[", 
+          RowBox[{
+           RowBox[{"Floor", "[", 
+            RowBox[{
+             RowBox[{"quotient", "*", 
+              RowBox[{"t", "/", 
+               RowBox[{"(", 
+                RowBox[{"2", "Pi"}], ")"}]}]}], "+", "1"}], "]"}], "/", 
+           "quotient"}], "]"}], ",", 
+         RowBox[{"Thickness", "[", ".007", "]"}], ",", 
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Cos", "[", "t", "]"}], ",", 
+              RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", 
+         RowBox[{"2", "Pi"}], ",", "0.01"}], "}"}]}], "]"}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"B", "=", 
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", "t", "]"}], ",", 
+          RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", 
+          RowBox[{"2", "Pi"}]}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"Thickness", "[", ".5", "]"}]}], ",", 
+        RowBox[{"Axes", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"ColorFunction", "\[Rule]", 
+         RowBox[{"Function", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", 
+           RowBox[{
+            RowBox[{"ColorData", "[", "\"\<Rainbow\>\"", "]"}], "[", 
+            RowBox[{
+             RowBox[{"discreteLog", "[", 
+              RowBox[{"Floor", "[", 
+               RowBox[{
+                RowBox[{"quotient", "*", "t"}], "+", "1"}], "]"}], "]"}], "/",
+              "quotient"}], "]"}]}], "]"}]}]}], "]"}]}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", "}"}]}]], "Input",
+ CellChangeTimes->{{3.645806768520018*^9, 3.6458067985077467`*^9}, {
+  3.64580749416932*^9, 3.6458074945370007`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"disk", "[", "n_", "]"}], ":=", 
+  RowBox[{"{", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"quotient", "=", "n"}], ";", 
+    RowBox[{"(*", 
+     RowBox[{"Prime", "[", "n", "]"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"base", "=", "2"}], ";", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"discreteLog", "[", "x_", "]"}], ":=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"NumberQ", "[", 
+        RowBox[{"MultiplicativeOrder", "[", 
+         RowBox[{"base", ",", "quotient", ",", "x"}], "]"}], "]"}], ",", 
+       RowBox[{"MultiplicativeOrder", "[", 
+        RowBox[{"base", ",", "quotient", ",", "x"}], "]"}], ",", "0"}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"Graphics", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"ColorData", "[", "\"\<Rainbow\>\"", "]"}], "[", 
+          RowBox[{
+           RowBox[{"discreteLog", "[", 
+            RowBox[{"Floor", "[", 
+             RowBox[{
+              RowBox[{"quotient", "*", 
+               RowBox[{"t", "/", 
+                RowBox[{"(", 
+                 RowBox[{"2", "Pi"}], ")"}]}]}], "+", "1"}], "]"}], "]"}], 
+           "/", "quotient"}], "]"}], ",", 
+         RowBox[{"Thickness", "[", ".007", "]"}], ",", 
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"0", ",", "0"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Cos", "[", "t", "]"}], ",", 
+              RowBox[{"Sin", "[", "t", "]"}]}], "}"}]}], "}"}], "]"}]}], 
+        "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", 
+         RowBox[{"2", "Pi"}], ",", "0.01"}], "}"}]}], "]"}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"B", "=", 
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"Cos", "[", "t", "]"}], ",", 
+          RowBox[{"Sin", "[", "t", "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", 
+          RowBox[{"2", "Pi"}]}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotStyle", "\[Rule]", 
+         RowBox[{"Thickness", "[", ".5", "]"}]}], ",", 
+        RowBox[{"Axes", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"ColorFunction", "\[Rule]", 
+         RowBox[{"Function", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"x", ",", "y", ",", "t"}], "}"}], ",", 
+           RowBox[{
+            RowBox[{"ColorData", "[", "\"\<Rainbow\>\"", "]"}], "[", 
+            RowBox[{
+             RowBox[{"discreteLog", "[", 
+              RowBox[{"Floor", "[", 
+               RowBox[{
+                RowBox[{"quotient", "*", "t"}], "+", "1"}], "]"}], "]"}], "/",
+              "quotient"}], "]"}]}], "]"}]}]}], "]"}]}], ";"}], "*)"}], 
+   "\[IndentingNewLine]", "}"}]}]], "Input",
+ CellChangeTimes->{{3.645678590432789*^9, 3.6456789261331253`*^9}, {
+  3.645679016265559*^9, 3.64567902336127*^9}, {3.645679059242158*^9, 
+  3.6456790652047157`*^9}, {3.645679104848995*^9, 3.645679127976451*^9}, {
+  3.645679159949246*^9, 3.6456791602794724`*^9}, {3.645679191887681*^9, 
+  3.6456791924743967`*^9}, {3.6456792970333557`*^9, 3.645679494132349*^9}, {
+  3.645679529313158*^9, 3.645679549294738*^9}, {3.6456795819952517`*^9, 
+  3.645679624328224*^9}, {3.645679669040374*^9, 3.64567973280249*^9}, {
+  3.645679790746962*^9, 3.645679791746613*^9}, {3.645680061384185*^9, 
+  3.64568010441986*^9}, {3.645680281703515*^9, 3.645680285321829*^9}, {
+  3.645680445737555*^9, 3.64568046654484*^9}, {3.6456806904397507`*^9, 
+  3.645680752188528*^9}, {3.645680782367874*^9, 3.6456807925358*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"disk", "[", "i", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", "1", ",", "20", ",", "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6456787850659647`*^9, 3.645678802507433*^9}, {
+  3.645679114211961*^9, 3.6456791150524263`*^9}, {3.645679498924589*^9, 
+  3.645679509661832*^9}, {3.645679803492535*^9, 3.645679836924344*^9}, {
+  3.6456800959812813`*^9, 3.645680151673039*^9}, {3.645680238984764*^9, 
+  3.6456802635624866`*^9}, {3.6456803717142963`*^9, 3.645680393317824*^9}, {
+  3.645680476934321*^9, 3.645680544925024*^9}, {3.64568080029895*^9, 
+  3.645680802561122*^9}, {3.6458071829100943`*^9, 3.645807215021819*^9}, {
+  3.645807246477314*^9, 3.645807247692975*^9}}],
+
+Cell[BoxData[
+ RowBox[{"disk", "[", 
+  RowBox[{"Prime", "[", "400", "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6456805638739567`*^9, 3.645680597656652*^9}}],
+
+Cell[BoxData[
+ RowBox[{"IdentityDisk", "[", "4", "]"}]], "Input",
+ CellChangeTimes->{{3.645806801590115*^9, 3.645806861020644*^9}, 
+   3.6458070392446203`*^9}],
+
+Cell[BoxData[
+ RowBox[{"disk", "[", "4", "]"}]], "Input",
+ CellChangeTimes->{{3.6458068653473883`*^9, 3.645806867193021*^9}, 
+   3.6458070428730717`*^9}]
+},
+WindowSize->{1920, 1047},
+WindowMargins->{{Automatic, 0}, {0, Automatic}},
+FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 3421, 90, 275, "Input"],
+Cell[3981, 112, 130, 2, 32, "Input"],
+Cell[4114, 116, 158, 4, 49, "Text"],
+Cell[4275, 122, 2628, 69, 187, "Input"],
+Cell[6906, 193, 3767, 89, 209, "Input"],
+Cell[10676, 284, 741, 13, 32, "Input"],
+Cell[11420, 299, 159, 3, 32, "Input"],
+Cell[11582, 304, 159, 3, 32, "Input"],
+Cell[11744, 309, 153, 3, 32, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
